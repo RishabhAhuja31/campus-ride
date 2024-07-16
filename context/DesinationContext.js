@@ -1,3 +1,13 @@
-import { createContext } from "react";
+import { createContext, useState } from 'react';
 
-export const DestinationContext=createContext(null);
+export const DestinationContext = createContext();
+
+export const DestinationProvider = ({ children }) => {
+  const [destination, setDestination] = useState(null);
+
+  return (
+    <DestinationContext.Provider value={{ destination, setDestination }}>
+      {children}
+    </DestinationContext.Provider>
+  );
+};
